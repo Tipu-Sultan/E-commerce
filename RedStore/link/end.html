@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+</head>
+<body>
+    
+<div class="w3-container">
+<table   class="w3-table w3-striped" cellspacing="">
+  <tr>
+    
+    <td>Id</td>
+    <td>Name</td>
+      <td>Mobile</td>
+      <td>Email</td>
+      <td>Address</td>
+      <td>Gender</td>
+        <td>Designation</td>
+        <td>Linkedin ID</td>
+        <td>Insta ID</td>
+         <td>DOB</td>
+         <td>State</td>
+           <td>University</td>
+           <td>Operation</td>
+  </tr>
+
+<?php
+include 'dbase.php';
+
+$selectquery = "select * from redcart";
+$query = mysqli_query($con,$selectquery);
+  $nums = mysqli_num_rows($query);
+
+  // output data of each row
+while ($row = mysqli_fetch_array($query)) {
+  ?>
+  
+<tr>
+
+<td><?php echo  $_SESSION['id']?></td>
+<td><?php echo  $_SESSION['username']?></td>
+<td><?php echo  $_SESSION['mobile']?></td>
+<td><?php echo  $_SESSION['email']?></td>
+
+
+<!-- //////////////////////////// -->
+<td><?php echo  $_SESSION['address']?></td>
+<td><?php echo  $_SESSION['gender']?></td>
+<td><?php echo  $_SESSION['designation']?></td>
+<td><?php echo  $_SESSION['linked']?></td>
+<td><?php echo  $_SESSION['insta']?></td>  
+<td><?php echo  $_SESSION['dob']?></td>
+<td><?php echo  $_SESSION['state']?></td>
+<td><?php echo  $_SESSION['university']?></td>
+ <td><a href="user.php?id=<?php echo  $row['id'] ?>">edit</a></td>
+    <td><a href="delete.php?id=<?php echo  $row['id'] ?>">Delete</a></td>
+
+</tr>
+</table>
+   
+
+  </tr>
+  <?php
+}
+
+?>
+</table>
+<button style="float: right;padding-top: 50px;" onclick="window.print()">Print this page</button>
+
+</div>
+<script type="text/javascript">
+  
+</script>
+</body>
+</html>
